@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 selectedTextElement.textContent = result[0].result.text;
+
+                // Truncate selected text if it exceeds 400 characters
+                truncateSelectedText();
             }
         );
     });
@@ -30,14 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Truncate selected text if it exceeds 400 characters
-    truncateSelectedText();
 
     // Add click-to-copy functionality for the ChatGPT response
     const chatgptResponseElem = document.getElementById('chatgpt-response');
     chatgptResponseElem.addEventListener('click', () => {
         copyTextToClipboard(chatgptResponseElem.innerText);
     });
+
+    const copyBtn = document.getElementById('copy-chatgpt-response');
+    copyBtn.addEventListener('click', () => {
+        copyTextToClipboard(chatgptResponseElem.innerText);
+    });
+
 });
 
 async function getSelectedText() {

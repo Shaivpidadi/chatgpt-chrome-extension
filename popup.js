@@ -1,3 +1,5 @@
+import config from "./config";
+
 document.addEventListener('DOMContentLoaded', () => {
     const selectedTextElement = document.getElementById('selected-text');
     const chatGPTResponseElement = document.getElementById('chatgpt-response');
@@ -54,10 +56,13 @@ async function getSelectedText() {
 
 async function fetchChatGPTResponse(prompt) {
     console.log('fetchChatGPTResponse called');
-    const apiKey = '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';
+    const apiKey = config.api_key;
     const url = 'https://api.openai.com/v1/engines/text-davinci-002/completions';
 
     try {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -74,10 +79,11 @@ async function fetchChatGPTResponse(prompt) {
         });
 
         const data = await response.json();
-        console.log('ChatGPT response:', data.choices[0].text.trim());
+        loader.style.display = 'none';
         return data.choices[0].text.trim();
     } catch (error) {
         console.error('Error in fetchChatGPTResponse:', error);
+        loader.style.display = 'none';
         throw error;
     }
 }

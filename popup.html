@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>ChatGPT Extension</title>
 </head>
 
 <body>
-    <div id="app">
-        <p><strong>Selected Text:</strong></p>
-        <p id="selected-text"></p>
-        <button id="get-chatgpt-response">Check with ChatGPT</button>
-        <p><strong>ChatGPT Response:</strong></p>
-        <p id="chatgpt-response"></p>
+    <div class="container">
+        <h1 class="title">ChatGPT</h1>
+        <div class="content">
+            <h3>Selected Text:</h3>
+            <p id="selected-text" class="selected-text"></p>
+            <button id="get-chatgpt-response" class="btn">Get ChatGPT Response</button>
+            <h3>ChatGPT Response:</h3>
+            <p id="chatgpt-response" class="chatgpt-response"></p>
+        </div>
     </div>
     <script src="popup.js"></script>
 </body>
